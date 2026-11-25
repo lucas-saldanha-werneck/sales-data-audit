@@ -1,0 +1,16 @@
+[project]
+name = "sales-data-audit"
+version = "0.1.0"
+description = "Data-quality audit for retail sell-out CSV files (stdlib only)"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+sales-data-audit = "sales_data_audit.cli:main"
+
+[tool.setuptools]
+packages = ["sales_data_audit"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

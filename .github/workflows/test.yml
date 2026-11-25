@@ -1,0 +1,17 @@
+name: test
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest
+      - run: pip install -e .
+      - run: pytest -q
+      - run: sales-data-audit --make-sample /tmp/sample.csv
+      - run: sales-data-audit /tmp/sample.csv || test $? -eq 1
